@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Rekomendasi Kamera AI</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .kamera-box {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .kamera-box h4 {
+            margin: 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🤖 Rekomendasi Kamera Berbasis AI (KNN)</h1>
+    <p>Temukan kamera yang cocok berdasarkan megapiksel, anggaran, jenis kamera, dan tujuan penggunaan.</p>
+
+    <!-- Kamera yang Direkomendasikan -->
+    <div id="kamera-rekomendasi">
+        <h2>📸 Kamera yang Direkomendasikan:</h2>
+        <div class="kamera-box">
+            <h4>Kamera A</h4>
+            <ul>
+                <li><strong>Jenis:</strong> Umum</li>
+                <li><strong>Megapiksel:</strong> 24,0 MP</li>
+                <li><strong>Harga:</strong> Rp12 jt</li>
+                <li><strong>Penggunaan:</strong> Umum</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Visualisasi dengan Plotly -->
+    <h2>📊 Megapiksel vs Harga Kamera</h2>
+    <div id="kamera-chart" style="width:100%;height:600px;"></div>
+
+    <script>
+        var data = [
+            {
+                x: [24, 30, 20],
+                y: [12, 20, 8],
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Umum',
+                marker: { size: 12, color: ['green', 'green', 'green'] },
+                text: ['Kamera A', 'Kamera B', 'Kamera C'],
+                hovertemplate: '<b>%{text}</b><br>Megapiksel: %{x}<br>Harga: %{y} jt<br>'
+            },
+            {
+                x: [24],
+                y: [12],
+                mode: 'markers+text',
+                type: 'scatter',
+                name: 'Rekomendasi',
+                marker: { size: 14, color: 'green', symbol: 'star' },
+                text: ['Kamera A'],
+                textposition: 'top center',
+                hoverinfo: 'skip'
+            }
+        ];
+
+        var layout = {
+            title: 'Megapiksel vs Harga Kamera',
+            xaxis: { title: 'Megapiksel' },
+            yaxis: { title: 'Harga (Juta Rupiah)' },
+        };
+
+        Plotly.newPlot('kamera-chart', data, layout);
+    </script>
+</body>
+</html>
